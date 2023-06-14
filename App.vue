@@ -55,7 +55,7 @@ export default {
         <IconClose v-show="barClosed" />
       </button>
       <div v-show="barClosed"
-        class=" absolute right-0 top-20 flex flex-col items-center gap-6 w-full h-[587px] px-6 pt-10 bg-neo-dark-violet text-center">
+        class=" absolute right-0 top-20 flex flex-col items-center gap-6 w-full h-[587px] px-6 pt-10 bg-neo-dark-violet text-center z-50">
         <NavBtn txt="How we work" />
         <NavBtn txt="Blog" />
         <NavBtn txt="Account" />
@@ -76,19 +76,23 @@ export default {
             <BgPatternIntroRightMobile />
             <BgPatternIntroRightDesktop class=" hidden" />
           </div>
-          <h1 class=" text-[48px] leading-[48px] tracking-[-.67px] font-serif-display">Humanizing your insurance.</h1>
+          <h1 class=" text-[48px] leading-[48px] tracking-[-.67px] font-serif-display z-30">Humanizing your insurance.
+          </h1>
           <p class=" mb-4 px-[2px] text-[16px] leading-[26px]">
             Get your life insurance coverage easier and faster. We blend our expertise
             and technology to help you find the plan that’s right for you. Ensure you
             and your loved ones are protected.
           </p>
           <button
-            class=" w-[146px] h-[40px] hover:bg-neo-light-gray hover:text-neo-dark-violet text-[13px] leading-[15px] tracking-[1.5px] font-bold uppercase border-[1.5px] border-neo-light-gray ">View
+            class=" w-[146px] h-[40px] hover:bg-neo-light-gray hover:text-neo-dark-violet text-[13px] leading-[15px] tracking-[1.5px] font-bold uppercase border-[1.5px] border-neo-light-gray select-none ">View
             plans</button>
         </div>
       </div>
       <div class=" flex flex-col gap-20 text-center">
-        <h1 class=" text-[48px] leading-[48px] tracking-[-.67px] font-serif-display">We’re different</h1>
+        <div class=" flex flex-col items-center gap-10">
+          <div class=" w-[150px] h-[1px] bg-extra1"></div>
+          <h1 class=" text-[48px] leading-[48px] tracking-[-.67px] font-serif-display">We’re different</h1>
+        </div>
         <div class=" flex flex-col gap-14">
           <Features :index="0" icon="One" />
           <Features :index="1" icon="Two" />
@@ -97,22 +101,23 @@ export default {
       </div>
       <div
         class=" relative flex flex-col justify-center items-center gap-10 h-[344px] bg-neo-violet mx-6 text-neo-light-gray text-center">
-        <div class=" absolute right-0 top-0">
+        <div class=" absolute right-0 top-0 pointer-events-none">
           <BgPatternHowWeWorkMobile />
+          <BgPatternHowWeWorkDesktop class=" hidden" />
         </div>
-        <h1 class=" text-[40px] leading-[40px] tracking-[-.56px] font-serif-display">
+        <h1 class=" text-[40px] leading-[40px] tracking-[-.56px] font-serif-display z-30">
           Find out more about how we work</h1>
         <button
-          class=" w-[160px] h-[40px] hover:bg-neo-light-gray hover:text-neo-dark-violet text-[13px] leading-[15px] tracking-[1.5px] font-bold uppercase border-[1.5px] border-neo-light-gray">How
+          class=" w-[160px] h-[40px] hover:bg-neo-light-gray hover:text-neo-dark-violet text-[13px] leading-[15px] tracking-[1.5px] font-bold uppercase border-[1.5px] border-neo-light-gray select-none">How
           we work</button>
       </div>
     </main>
     <footer class=" relative flex flex-col gap-10 w-full px-6 py-[88px] bg-neo-light-gray">
-      <div>
-        <BgPatternFooterMobile class=" absolute top-0 left-0" />
-        <BgPatternFooterDesktop class=" absolute hidden top-0 left-0" />
+      <div class=" absolute top-0 left-0">
+        <BgPatternFooterMobile />
+        <BgPatternFooterDesktop class=" hidden" />
       </div>
-      <div class=" flex flex-col items-center gap-8">
+      <div class=" flex flex-col items-center gap-8 z-30">
         <Logo />
         <div class=" flex items-center gap-4">
           <NetworkIcon iconName="facebook" />

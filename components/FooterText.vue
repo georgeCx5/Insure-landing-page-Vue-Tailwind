@@ -32,7 +32,8 @@ export default {
    <div class=" flex flex-col gap-9">
       <h4 class=" text-neo-grayish-violet uppercase">{{ data[index].title }}</h4>
       <div class=" flex flex-col gap-4">
-         <h5 class=" uppercase hover:underline cursor-pointer" v-for=" item in data[index].paragraph">
+         <h5 class=" uppercase hover:underline cursor-pointer select-none" 
+         v-for=" item in data[index].paragraph">
             {{ item }}
          </h5>
       </div>
