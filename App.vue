@@ -52,7 +52,8 @@ export default {
 </script>
 <template>
   <body class="flex flex-col items-center text-neo-violet font-karla">
-    <nav class=" flex justify-between items-center w-full h-20 bg-white px-6 TB:px-10 DT:px-24 DTL:px-40 DTX:px-44 DT:z-50">
+    <nav
+      class=" flex justify-between items-center w-full h-20 bg-white px-6 TB:px-10 DT:px-24 DTL:px-40 DTX:px-44 DT:z-50">
       <Logo />
       <!-- Nav Mobile -->
       <button @click="barClosed = !barClosed" class=" TB:hidden cursor-pointer">
@@ -78,9 +79,11 @@ export default {
     <main class=" flex flex-col gap-[140px] DT:gap-[158px] w-[375px] TB:w-[768px] DT:w-full mb-[140px] DT:mb-[150px]">
       <div class=" DT:relative TB:flex TB:h-[451px] DT:h-[540px] DTL:h-[600px] DT:mb-[148px]">
         <img class=" DT:hidden" :src="imgMobile" alt="imgMobile" draggable="false">
-        <img class=" DT:absolute DT:top-[105px] DT:right-[115px] DTL:right-[165px] DTX:right-[195px] hidden DT:block DT:w-[459px] DTL:w-[540px] DTX:w-[621px] DT:z-40 "
+        <img
+          class=" DT:absolute DT:top-[105px] DT:right-[115px] DTL:right-[165px] DTX:right-[195px] hidden DT:block DT:w-[459px] DTL:w-[540px] DTX:w-[621px] DT:z-40 "
           :src="imgDesktop" alt="imgDesktop" draggable="false">
-        <div class=" relative DT:w-full px-6 DT:px-[115px] DTL:px-[165px] DTX:px-[195px] bg-neo-violet text-neo-light-gray text-center DT:text-left">
+        <div
+          class=" relative DT:w-full px-6 DT:px-[115px] DTL:px-[165px] DTX:px-[195px] bg-neo-violet text-neo-light-gray text-center DT:text-left">
           <div class=" absolute left-0 top-0 DT:top-[428px] pointer-events-none">
             <BgPatternIntroLeftMobile class=" DT:hidden" />
             <BgPatternIntroLeftDesktop class=" hidden DT:block" />
@@ -93,7 +96,7 @@ export default {
             class=" DT:relative flex flex-col justify-center items-center DT:items-start gap-4 DTX:gap-6 DT:w-[490px] DTL:w-[540px] DTX:w-[625px] h-[500px] TB:h-full">
             <div class=" absolute top-[104px] hidden DT:block w-[150px] h-[1px] bg-white "></div>
             <h1
-              class=" text-[48px] DT:text-[64px] DTL:text-[72px] leading-[48px] DT:leading-[56px] tracking-[-.67px] DT:tracking-[-1px] font-serif-display z-30">
+              class=" DTL:pr-4 DTX:pr-32 text-[48px] DT:text-[64px] DTL:text-[72px] leading-[48px] DT:leading-[56px] DTL:leading-[64px] tracking-[-.67px] DT:tracking-[-1px] font-serif-display z-30">
               Humanizing your insurance.
             </h1>
             <p class=" mb-4 DT:mb-2 px-[2px] text-[16px] leading-[26px]">
@@ -158,5 +161,4 @@ export default {
         <FooterText :index="3" />
       </div>
     </footer>
-  </body>
-</template>
+</body></template>
