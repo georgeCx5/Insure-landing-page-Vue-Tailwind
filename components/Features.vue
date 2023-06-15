@@ -37,9 +37,9 @@ export default {
 }
 </script>
 <template>
-   <div class=" flex flex-col items-center gap-8">
+   <div class=" flex flex-col TB:flex-row-reverse DT:flex-col TB:justify-center items-center DT:items-start gap-8">
       <component :is="icon" />
-      <div class=" flex flex-col gap-4">
+      <div class=" flex flex-col gap-4 TB:w-[475px] DT:w-[350px]">
          <h2 class=" text-[28px] leading-[38px] tracking-[-.39px] font-serif-display">
             {{ data[index].title }}
          </h2>

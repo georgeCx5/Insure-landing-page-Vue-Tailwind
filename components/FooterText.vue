@@ -29,7 +29,7 @@ export default {
 }
 </script>
 <template>
-   <div class=" flex flex-col gap-9">
+   <div class=" flex flex-col gap-9 TB:gap-5">
       <h4 class=" text-neo-grayish-violet uppercase">{{ data[index].title }}</h4>
       <div class=" flex flex-col gap-4">
          <h5 class=" uppercase hover:underline cursor-pointer select-none" 

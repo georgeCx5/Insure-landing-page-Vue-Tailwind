@@ -1,5 +1,6 @@
 <script>
 import NavBtn from './components/NavBtn.vue'
+import NavNoBarBtn from './components/NavNoBarBtn.vue'
 import Features from './components/Features.vue'
 import NetworkIcon from './components/NetworkIcon.vue'
 import FooterText from './components/FooterText.vue'
@@ -18,15 +19,18 @@ import BgPatternFooterMobile from '@/assets/images/bg-pattern-footer-mobile.svg?
 import BgPatternFooterDesktop from '@/assets/images/bg-pattern-footer-desktop.svg?component'
 
 import imgMobile from '@/assets/images/image-intro-mobile.jpg';
+import imgDesktop from '@/assets/images/image-intro-desktop.jpg';
 export default {
   data() {
     return {
       imgMobile,
+      imgDesktop,
       barClosed: false,
     }
   },
   components: {
     NavBtn,
+    NavNoBarBtn,
     Features,
     NetworkIcon,
     FooterText,
@@ -48,76 +52,93 @@ export default {
 </script>
 <template>
   <body class="flex flex-col items-center text-neo-violet font-karla">
-    <nav class=" flex justify-between items-center w-full h-20 px-6">
+    <nav class=" flex justify-between items-center w-full h-20 bg-white px-6 DT:z-50">
       <Logo />
-      <button @click="barClosed = !barClosed" class=" cursor-pointer">
+      <!-- Nav Mobile -->
+      <button @click="barClosed = !barClosed" class=" TB:hidden cursor-pointer">
         <IconOpen v-show="!barClosed" />
         <IconClose v-show="barClosed" />
       </button>
       <div v-show="barClosed"
-        class=" absolute right-0 top-20 flex flex-col items-center gap-6 w-full h-[587px] px-6 pt-10 bg-neo-dark-violet text-center z-50">
+        class=" absolute right-0 top-20 flex TB:hidden flex-col items-center gap-6 w-full h-[587px] px-6 pt-10 bg-neo-dark-violet text-center z-50">
         <NavBtn txt="How we work" />
         <NavBtn txt="Blog" />
         <NavBtn txt="Account" />
         <NavBtn txt="View plans" hSize="h-[56px]" borderColor="border-neo-light-gray" />
-        <BgPatternNav class=" absolute right-0 bottom-0" />
+        <BgPatternNav class=" absolute right-0 bottom-0 pointer-events-none" />
+      </div>
+      <!-- Nav Tablet/Desktop -->
+      <div class=" hidden TB:flex TB:items-center TB:gap-[20px] DT:gap-[25px]">
+        <NavNoBarBtn txt="How we work" />
+        <NavNoBarBtn txt="Blog" />
+        <NavNoBarBtn txt="Account" />
+        <NavNoBarBtn txt="View plans" :specialTxt="true" />
       </div>
     </nav>
-    <main class=" flex flex-col gap-[140px]  w-[375px] mb-[140px]">
-      <div>
-        <img class=" " :src="imgMobile" alt="imgMobile" draggable="false">
-        <div
-          class=" relative flex flex-col justify-center gap-4 items-center h-[500px] px-[24px] bg-neo-violet text-neo-light-gray text-center">
-          <div class=" absolute left-0 top-0">
-            <BgPatternIntroLeftMobile />
-            <BgPatternIntroLeftDesktop class=" hidden" />
+    <main class=" flex flex-col gap-[140px] DT:gap-[158px] w-[375px] TB:w-[768px] DT:w-full mb-[140px] DT:mb-[150px]">
+      <div class=" DT:relative TB:flex TB:h-[451px] DT:h-[540px] DT:mb-[148px]">
+        <img class=" DT:hidden" :src="imgMobile" alt="imgMobile" draggable="false">
+        <img class=" DT:absolute DT:top-[105px] DT:right-[115px] hidden DT:block DT:w-[459px] DT:z-40 " :src="imgDesktop"
+          alt="imgDesktop" draggable="false">
+        <div class=" relative DT:w-full px-6 DT:px-[115px] bg-neo-violet text-neo-light-gray text-center DT:text-left">
+          <div class=" absolute left-0 top-0 DT:top-[428px] pointer-events-none">
+            <BgPatternIntroLeftMobile class=" DT:hidden" />
+            <BgPatternIntroLeftDesktop class=" hidden DT:block" />
           </div>
-          <div class=" absolute right-0 -bottom-[176px]">
-            <BgPatternIntroRightMobile />
-            <BgPatternIntroRightDesktop class=" hidden" />
+          <div class=" absolute right-0 -bottom-[156px] DT:bottom-auto DT:-top-[57px] pointer-events-none">
+            <BgPatternIntroRightMobile class=" DT:hidden" />
+            <BgPatternIntroRightDesktop class=" hidden DT:block" />
           </div>
-          <h1 class=" text-[48px] leading-[48px] tracking-[-.67px] font-serif-display z-30">Humanizing your insurance.
-          </h1>
-          <p class=" mb-4 px-[2px] text-[16px] leading-[26px]">
-            Get your life insurance coverage easier and faster. We blend our expertise
-            and technology to help you find the plan that’s right for you. Ensure you
-            and your loved ones are protected.
-          </p>
-          <button
-            class=" w-[146px] h-[40px] hover:bg-neo-light-gray hover:text-neo-dark-violet text-[13px] leading-[15px] tracking-[1.5px] font-bold uppercase border-[1.5px] border-neo-light-gray select-none ">View
-            plans</button>
+          <div
+            class=" DT:relative flex flex-col justify-center gap-4 items-center DT:items-start DT:w-[490px] h-[500px] TB:h-full">
+            <div class=" absolute top-[104px] hidden DT:block w-[150px] h-[1px] bg-white "></div>
+            <h1
+              class=" text-[48px] DT:text-[56px] leading-[48px] DT:leading-[56px] tracking-[-.67px] DT:tracking-[-1px] font-serif-display z-30">
+              Humanizing your insurance.
+            </h1>
+            <p class=" mb-4 DT:mb-2 px-[2px] text-[16px] leading-[26px]">
+              Get your life insurance coverage easier and faster. We blend our expertise
+              and technology to help you find the plan that’s right for you. Ensure you
+              and your loved ones are protected.
+            </p>
+            <button
+              class=" w-[146px] h-[40px] hover:bg-neo-light-gray hover:text-neo-dark-violet text-[13px] leading-[15px] tracking-[1.5px] font-bold uppercase border-[1.5px] border-neo-light-gray select-none ">View
+              plans</button>
+          </div>
         </div>
       </div>
-      <div class=" flex flex-col gap-20 text-center">
-        <div class=" flex flex-col items-center gap-10">
+      <div class=" flex flex-col DT:items-center gap-20 text-center DT:text-left">
+        <div class=" flex flex-col items-center DT:items-start DT:w-[1110px] gap-10">
           <div class=" w-[150px] h-[1px] bg-extra1"></div>
           <h1 class=" text-[48px] leading-[48px] tracking-[-.67px] font-serif-display">We’re different</h1>
         </div>
-        <div class=" flex flex-col gap-14">
+        <div class=" flex flex-col DT:flex-row gap-14 DT:gap-[30px]">
           <Features :index="0" icon="One" />
           <Features :index="1" icon="Two" />
           <Features :index="2" icon="Three" />
         </div>
       </div>
       <div
-        class=" relative flex flex-col justify-center items-center gap-10 h-[344px] bg-neo-violet mx-6 text-neo-light-gray text-center">
+        class=" relative flex flex-col TB:flex-row justify-center TB:justify-between items-center gap-10 h-[344px] TB:h-[250px] bg-neo-violet mx-6 TB:mx-10 DT:mx-[115px] TB:px-8 DT:px-16 text-neo-light-gray text-center DT:text-left">
         <div class=" absolute right-0 top-0 pointer-events-none">
-          <BgPatternHowWeWorkMobile />
-          <BgPatternHowWeWorkDesktop class=" hidden" />
+          <BgPatternHowWeWorkMobile class=" TB:hidden" />
+          <BgPatternHowWeWorkDesktop class=" hidden TB:block" />
         </div>
-        <h1 class=" text-[40px] leading-[40px] tracking-[-.56px] font-serif-display z-30">
+        <h1
+          class=" TB:w-[415px] text-[40px] DT:text-[48px] leading-[40px] DT:leading-[48px] tracking-[-.56px] font-serif-display z-30">
           Find out more about how we work</h1>
         <button
-          class=" w-[160px] h-[40px] hover:bg-neo-light-gray hover:text-neo-dark-violet text-[13px] leading-[15px] tracking-[1.5px] font-bold uppercase border-[1.5px] border-neo-light-gray select-none">How
+          class=" w-[160px] h-[40px] hover:bg-neo-light-gray hover:text-neo-dark-violet text-[13px] leading-[15px] tracking-[1.5px] font-bold uppercase border-[1.5px] border-neo-light-gray select-none z-30">How
           we work</button>
       </div>
     </main>
-    <footer class=" relative flex flex-col gap-10 w-full px-6 py-[88px] bg-neo-light-gray">
-      <div class=" absolute top-0 left-0">
-        <BgPatternFooterMobile />
-        <BgPatternFooterDesktop class=" hidden" />
+    <footer
+      class=" relative flex flex-col gap-10 items-center w-full px-6 TB:px-20 DT:px-[115px] py-[88px] bg-neo-light-gray">
+      <div class=" absolute top-0 left-0 pointer-events-none">
+        <BgPatternFooterMobile class=" TB:hidden" />
+        <BgPatternFooterDesktop class=" hidden TB:block" />
       </div>
-      <div class=" flex flex-col items-center gap-8 z-30">
+      <div class=" flex flex-col TB:flex-row TB:justify-between items-center gap-8 TB:w-full z-30">
         <Logo />
         <div class=" flex items-center gap-4">
           <NetworkIcon iconName="facebook" />
@@ -126,8 +147,9 @@ export default {
           <NetworkIcon iconName="instagram" />
         </div>
       </div>
-      <div class=" w-full h-[1px] bg-neo-grayish-violet"></div>
-      <div class=" flex flex-col gap-10 text-center text-[13px] leading-[15px] tracking-[1.5px] font-bold">
+      <div class=" w-full h-[1px] bg-neo-grayish-violet TB:z-30"></div>
+      <div
+        class=" flex flex-col TB:flex-row TB:justify-center DT:justify-start gap-10 TB:gap-16 DT:gap-44 w-[200px] TB:w-auto DT:w-full bg-red-200 text-center DT:text-left text-[13px] leading-[15px] tracking-[1.5px] font-bold TB:z-30">
         <FooterText :index="0" />
         <FooterText :index="1" />
         <FooterText :index="2" />
